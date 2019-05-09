@@ -17,10 +17,13 @@ def run_game():
     ai_settings = Settings()
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
 
-    # Создание корабля
+    # Создание корабля, группы пуль и группы пришельцев
     ship = Ship(ai_settings, screen)
-    # Создание группы для хранения пуль
     bullets = Group()
+    aliens = Group()
+    
+    # Создание флота пришельцев
+    gf.create_fleet(ai_settings, screen, aliens)
 
     # запуск основного цикла
     while True:
@@ -28,7 +31,7 @@ def run_game():
         gf.chec_events(ai_settings, screen, ship, bullets)  # Цикл событий из модуля game_functions.py
         ship.update()  # обновление позиции корабля
         gf.update_bullets(bullets)  # обновление позиций выпущенных пуль
-        gf.update_screen(ai_settings, screen, ship, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
 
 run_game()  # запуск игрового цикла
