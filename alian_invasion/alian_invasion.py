@@ -30,7 +30,7 @@ def run_game():
         # Отслеживание событий клавиатуры мыши.
         gf.chec_events(ai_settings, screen, ship, bullets)  # Цикл событий из модуля game_functions.py
         ship.update()  # обновление позиции корабля
-        gf.update_bullets(bullets)  # обновление позиций выпущенных пуль
+        gf.update_bullets(ai_settings, screen, ship, aliens, bullets)  # обновление позиций выпущенных пуль
         gf.update_aliens(ai_settings, aliens)
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
