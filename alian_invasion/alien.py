@@ -13,8 +13,11 @@ class Alien(Sprite):
         self.screen = screen
         self.ai_settings = ai_settings
 
+        # Настройка скорости пришельцев
+        self.alien_speed_factor = 1
+
         # Загрузка изображения пришельца и назначение атрибута rect
-        self.image = pygame.image.load('images/ufo_.bmp')
+        self.image = pygame.image.load('images/ufo__.bmp')
         self.rect = self.image.get_rect()
 
         # Каждый новый пришелец появляется в левом верхнем углу экрана
@@ -27,3 +30,16 @@ class Alien(Sprite):
     def blitme(self):
         '''Выводит пришельца в текущем положении'''
         self.screen.blit(self.image, self.rect)
+
+    def check_edges(self):
+        '''Возвращает True, если пришелец находится у края экрана'''
+        screen_rect = self.screen.get_rect()
+        if self.rect.right >= screen_rect.right:
+            return True
+        elif self.rect.left <= 0:
+            return True
+
+    def update(self):
+        '''Перемещение пришельца вправо'''
+        self.x += (self.ai_settings.alien_speed_factor * self.ai_settings.fleet_direction)
+        self.rect.x = self.x
