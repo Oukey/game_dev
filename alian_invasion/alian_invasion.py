@@ -42,11 +42,13 @@ def run_game():
     while True:
         # Отслеживание событий клавиатуры мыши
         gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
-        # if stats.game_active:
-        ship.update()  # обновление позиции корабля
-        gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)  # обновление позиций выпущенных пуль
-        gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
-        gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)  # обновление экрана
+        gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
+        if stats.game_active:
+            ship.update()  # обновление позиции корабля
+            gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, screen, stats, sb, ship, aliens, bullets)
+
+            # gf.update_screen(ai_settings, screen, stats, sb, ship, aliens, bullets, play_button)
 
 
 run_game()  # запуск игрового цикла
