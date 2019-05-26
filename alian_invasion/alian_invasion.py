@@ -41,8 +41,7 @@ def run_game():
     # запуск основного цикла
     while True:
         # Отслеживание событий клавиатуры мыши
-        gf.check_events(ai_settings, screen, stats, play_button, ship, aliens,
-                        bullets)  # Цикл событий из модуля game_functions.py
+        gf.check_events(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets)
         # if stats.game_active:
         ship.update()  # обновление позиции корабля
         gf.update_bullets(ai_settings, screen, stats, sb, ship, aliens, bullets)  # обновление позиций выпущенных пуль
